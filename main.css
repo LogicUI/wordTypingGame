@@ -1,0 +1,94 @@
+html, body {
+  height: 100%;
+  font-family: 'Passion One', cursive;
+}
+
+.content {
+  height: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url("trees.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("trees.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white;
+  min-height: 100%;
+  font-size: 1.5rem;
+}
+
+.box {
+  padding: 2rem;
+  width: 60%;
+  min-height: 50%;
+  max-height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 1.5rem;
+}
+
+@media (min-width: 700px) {
+  .box {
+    font-size: 2.0rem;
+    text-align: none;
+  }
+}
+
+.box h1 {
+  text-align: center;
+  font-family: 'Bungee Outline', cursive;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 700px) {
+  .box h1 {
+    font-size: 3.0rem;
+  }
+}
+
+.box input {
+  cursor: pointer;
+  border-radius: 5px;
+  width: 10rem;
+  padding: 0.2rem;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 700px) {
+  .box input {
+    width: 20rem;
+  }
+}
+
+.box button {
+  border-radius: 5px;
+  width: 7rem;
+  padding: 0.2rem;
+  font-size: 1.5rem;
+  border: 2px solid black;
+  cursor: pointer;
+  background: #ff9966;
+  color: white;
+  -webkit-transition: background-color 0.5s ease-in-out;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.box button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.score {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.score .score-item {
+  margin-left: 1rem;
+}
+/*# sourceMappingURL=main.css.map */

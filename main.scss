@@ -1,0 +1,92 @@
+$size:1rem;
+
+@mixin minwidth($width){
+    @media(min-width:$width){
+        @content;
+    }
+}
+
+@mixin flex-direction-mid(){
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+html,body{
+    height:100%;
+    font-family: 'Passion One', cursive;
+}
+.content{
+    height:100%;
+    background:linear-gradient(rgba(0, 0, 0, 0.7 ),rgba(0, 0, 0, 0.7)),url("trees.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;
+    @include flex-direction-mid();
+    color:white;
+    min-height:100%;
+    font-size:$size * 1.5;
+}
+
+.box{
+    padding:2rem;
+    width:60%;
+    min-height:50%;
+    max-height:100%;
+    background:rgba(255,255,255,0.2);
+    font-size:1.5rem;
+
+
+    @include minwidth(700px){
+        font-size:2.0rem;
+        text-align:none;
+        
+    }
+
+    h1{
+        text-align: center;
+        font-family: 'Bungee Outline', cursive;
+        font-size:1.5rem;
+        @include minwidth(700px){
+            font-size:3.0rem;
+        }
+    }
+
+    input{
+        cursor: pointer;
+        border-radius:5px;
+        width:10rem;
+        padding:0.2rem;
+        font-size:1.5rem;
+
+        @include minwidth(700px){
+            width:20rem;
+        }
+
+    }
+
+    button{
+        border-radius:5px;
+        width:7rem;
+        padding:0.2rem;
+        font-size:1.5rem;
+        border:2px solid black;
+        cursor: pointer;
+        background: #ff9966;
+        color:white;
+        transition: background-color 0.5s ease-in-out;
+
+        &:hover{
+            background:rgba(255,255,255,0.2);
+        }
+    }
+}
+
+
+.score{
+    display:flex;
+
+    .score-item{
+        margin-left:1rem;
+    }
+
+}
