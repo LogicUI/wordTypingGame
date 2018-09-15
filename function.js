@@ -1,7 +1,7 @@
 function init(){
     refresh();
     wordInput.addEventListener("input",startMatch);
-    setInterval(checkStatus, 50);
+    wordInput.focus(); //will automatically 
 }
 
 function showWord(words){
@@ -15,25 +15,22 @@ function startMatch(){
     }
 }
 
-
+// check if input parameter matches the current word displayed
 function matchWords(){
-    if(wordInput.value === currentWord.textContent){
-        message.textContent ="correct";
-        return true;
-    }else{
-        message.textContent ="";
-        return false;
-    }
+    message.textContent = wordInput.value === currentWord.textContent ? "correct" : ""
+    return Boolean(message.textContent); // change output to falsy value 
+
 }
 
 function countdown(){
     if(time > 0){
         time--;
     }
-    if(time === 0){
+    else{
         isPlaying = false;
     }
     timeDisplay.textContent = time;
+    checkStatus();
 }
 
 function checkStatus(){
@@ -44,10 +41,14 @@ function checkStatus(){
 
 function refresh(){
     wordInput.readOnly = false;
-    resetInputs();
-    resetTime();
+    message.textContent = "";
+    wordInput.value = "";
+    seconds.textContent = currentLevel;
+    time = currentLevel; // for refreshing the page 
+    timeDisplay.textContent = time;
+    score = 0;
+    scoreDisplay.textContent = score;
     resetInterval();
-    resetScore();
     showWord(words);
 }
 
@@ -56,19 +57,6 @@ function resetInterval(){
     idleInterval = setInterval(countdown,1000);
 }
 
-function resetInputs(){
-    message.textContent="";
-    wordInput.value = "";
-}
-function resetTime(){
-    time = currentLevel + 1; // for refreshing the page
-    seconds.textContent = currentLevel;
-}
-
-function resetScore(){
-    score = 0;
-    scoreDisplay.textContent = score;
-}
 
 function displayEndGame(){
     setNewHighScore();
@@ -78,39 +66,31 @@ function displayEndGame(){
 }
 
 function goNextStage(){
+    score++;
     increaseLevel();
     isPlaying = true;
     showWord(words);
     wordInput.value = "";
-    score++;
     scoreDisplay.textContent = score;
 }
 
 function increaseLevel(){
-    time = currentLevel + 1;
-    if(score >= 5){
-        time = levels.medium + 1; 
-        seconds.textContent = time -1;
-    }
-    if(score >=10){
-        time = levels.hard +1;
-        seconds.textContent = time -1;
-    }
+    time = score >= 10? levels.hard : score >=5 ? levels.medium : currentLevel;
+    seconds.textContent = time;
+    timeDisplay.textContent = time;
 }
 
 function setNewHighScore(){
     if(score > getNewScore()){
         localStorage.setItem("bestscore",score);
     }
-    else if(getNewScore() === 0){
-        localStorage.setItem("bestscore",score);
-    }
 }
 
 function getNewScore(){
-    var getCurrentScore = localStorage.getItem("bestscore");
-    if(getCurrentScore !== null){
-        return getCurrentScore;
+    const getCurrentScore = localStorage.getItem("bestscore");
+    if(!getCurrentScore){
+        localStorage.setItem("bestscore",0);
+        return 0;
     }
-    return 0;
+    return getCurrentScore;
 }

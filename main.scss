@@ -6,6 +6,12 @@ $size:1rem;
     }
 }
 
+@mixin maxwidth($width){
+    @media(max-width: $width){
+        @content;
+    }
+}
+
 @mixin flex-direction-mid(){
     display:flex;
     align-items: center;
@@ -39,8 +45,14 @@ html,body{
     @include minwidth(700px){
         font-size:2.0rem;
         text-align:none;
-        
     }
+
+    @include maxwidth(700px){
+        @include flex-direction-mid();
+        flex-direction: column;
+        text-align: center;
+    }
+
 
     h1{
         text-align: center;
@@ -54,7 +66,7 @@ html,body{
     input{
         cursor: pointer;
         border-radius:5px;
-        width:10rem;
+        width:15rem;
         padding:0.2rem;
         font-size:1.5rem;
 
@@ -66,7 +78,7 @@ html,body{
 
     button{
         border-radius:5px;
-        width:7rem;
+        width:15rem;
         padding:0.2rem;
         font-size:1.5rem;
         border:2px solid black;
@@ -74,6 +86,10 @@ html,body{
         background: #ff9966;
         color:white;
         transition: background-color 0.5s ease-in-out;
+
+        @include minwidth(700px){
+            width:7rem;
+        }
 
         &:hover{
             background:rgba(255,255,255,0.2);
@@ -84,9 +100,17 @@ html,body{
 
 .score{
     display:flex;
-
     .score-item{
         margin-left:1rem;
     }
+
+    @include maxwidth(700px){
+        display:flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+        flex-flow:row wrap;
+        justify-content: center;
+    }
+
 
 }
