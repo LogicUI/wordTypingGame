@@ -13,7 +13,7 @@ High Score for the user is tracked using local storage
 
 # Goal 
 
-The goal of the project is to practice my javascript skills by building features ontop of a ready made app
+The goal of the project is to practice my javascript skills by building features ontop of what was being build to enhance the app 
 
 
 # Inspiration 
